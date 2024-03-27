@@ -50,10 +50,7 @@ class TUI(val controller: ControllerInterface) extends Observer {
       // start a new game
       case "n" => controller.newGame
       // undo a turn
-      case "u" => {
-        controller.undo
-        return false
-      }
+      case "u" => controller.undo
       // redo a turn
 
       case "r" => controller.redo
