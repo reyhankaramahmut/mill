@@ -34,8 +34,8 @@ class Controller @Inject() (private val board: BoardInterface)
   var gameState: Option[GameState] = None
   var fromField: Option[FieldInterface] = None
 
-  def undo = undoCommand.undoStep
-  def redo = undoCommand.redoStep
+  def undo: Option[Throwable] = undoCommand.undoStep
+  def redo: Option[Throwable] = undoCommand.redoStep
 
   def addFirstPlayer(playerName: String, playerColor: String = "🔴") = {
     twoPlayers(0) = Player(playerName, playerColor)
@@ -129,9 +129,6 @@ class Controller @Inject() (private val board: BoardInterface)
         }
       }
   }
-
-  def undo: Option[Throwable] = undoCommand.undoStep
-  def redo: Option[Throwable] = undoCommand.redoStep
 
   def setPiece(to: FieldInterface): Option[Throwable] = {
     undoCommand.backup(createSnapshot)
