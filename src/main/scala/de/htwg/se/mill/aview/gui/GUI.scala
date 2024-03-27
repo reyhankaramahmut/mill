@@ -75,7 +75,7 @@ class GUI(val controller: ControllerInterface) extends JFXApp3 with Observer {
               case Some(name) => controller.addFirstPlayer(name)
               case None => {
                 println("Add first Player Dialog was canceled.")
-                start()
+                sys.exit()
               }
             }
             val secondPlayerName = new TextInputDialog() {
@@ -89,7 +89,7 @@ class GUI(val controller: ControllerInterface) extends JFXApp3 with Observer {
               case Some(name) => controller.addSecondPlayer(name)
               case None => {
                 println("Add second Player Dialog was canceled.")
-                start()
+                sys.exit()
               }
             }
             controller.newGame
